@@ -1,5 +1,7 @@
 public class BasicRotor extends Rotor {
 
+    private int[] inverseMapping;
+
     public void initialise(String name){
         this.name = name;
         if(name == "I"){
@@ -22,19 +24,27 @@ public class BasicRotor extends Rotor {
     public BasicRotor(String name){
         this.initialise(name);
         this.position = 0;
+        this.inverseMapping = new int[26];
+        int count = 0;
+        for(int i: this.mapping){
+            this.inverseMapping[i] = count;
+            count++;
+        }
+
     }
 
     private int basicSubstitution(int character, int[] mapping){
-        if(character - this.position >= 0){
-            if(mapping[character - this.position] + this.position > ROTORSIZE){
-                return mapping[character - this.position] + this.position - ROTORSIZE;
+        character++;
+        if(character - this.position >= 1){
+            if(mapping[character - this.position - 1] + this.position >= ROTORSIZE){
+                return mapping[character - this.position - 1] + this.position - ROTORSIZE;
             }
-            return mapping[character - this.position] + this.position;
+            return mapping[character - this.position - 1] + this.position;
         } else {
-            if(mapping[ROTORSIZE + (character - this.position)] + this.position > ROTORSIZE){
-                return mapping[ROTORSIZE + (character - this.position)] + this.position - ROTORSIZE;
+            if(mapping[ROTORSIZE + (character - this.position) - 1] + this.position >= ROTORSIZE){
+                return mapping[ROTORSIZE + (character - this.position) - 1] + this.position - ROTORSIZE;
             }
-            return mapping[ROTORSIZE + (character - this.position)] + this.position;
+            return mapping[ROTORSIZE + (character - this.position) - 1] + this.position;
         }
     }
 
@@ -43,20 +53,14 @@ public class BasicRotor extends Rotor {
     }
     
     public int substituteBack(int character){
-        int[] inverseMapping = new int[26];
-        int count = 0;
-        for(int i: this.mapping){
-            inverseMapping[i] = count;
-            count++;
-        }
-       return basicSubstitution(character, inverseMapping);
+       return basicSubstitution(character, this.inverseMapping);
     }
 
     public void rotate(){
         if(this.position == ROTORSIZE){
             this.position = 0;
-        } else {
-            this.position++;
+            return;
         }
+        this.position++;
     }
 }

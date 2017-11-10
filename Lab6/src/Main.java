@@ -1,6 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
+        //Creates 3 animals
         Parrot parrot = new Parrot(3, "Pesho");
         Wolf wolf = new Wolf(5, "Gosho");
         Cow cow = new Cow(4, "Milka");

@@ -50,10 +50,12 @@ public class EnigmaMachine {
         index = this.reflector.substitute(index);
 
         for(int i = 2; i >= 0; i--){
-            index = this.rotors[i].substitute(index);
+            index = this.rotors[i].substituteBack(index);
         }
 
         index += 97;
+
+        this.rotors[0].rotate();
 
         return this.plugboard.substitute((char) index);
 
@@ -61,21 +63,21 @@ public class EnigmaMachine {
     }
 
     public void start(){
-        this.addPlug('a', 'm');
-        this.addPlug('g', 'l');
-        this.addPlug('e', 't');
-        this.addRotor(new BasicRotor("I"), 0);
-        this.setPosition(0, 6);
-        this.addRotor(new BasicRotor("II"), 1);
-        this.setPosition(1, 12);
-        this.addRotor(new BasicRotor("III"), 2);
-        this.setPosition(2, 5);
-        this.addReflector(new Reflector("ReflectorI"));
+        this.addPlug('b', 'c');
+        this.addPlug('r', 'i');
+        this.addPlug('s', 'm');
+        this.addPlug('a', 'f');
+        this.addRotor(new BasicRotor("IV"), 0);
+        this.setPosition(0, 23);
+        this.addRotor(new BasicRotor("V"), 1);
+        this.setPosition(1, 4);
+        this.addRotor(new BasicRotor("II"), 2);
+        this.setPosition(2, 9);
+        this.addReflector(new Reflector("ReflectorII"));
         System.out.print(this.encodeLetter('g'));
-        System.out.print(this.encodeLetter('f'));
-        System.out.print(this.encodeLetter('w'));
+        System.out.print(this.encodeLetter('a'));
+        System.out.print(this.encodeLetter('c'));
         System.out.print(this.encodeLetter('i'));
-        System.out.print(this.encodeLetter('q'));
-        System.out.print(this.encodeLetter('h'));
+        System.out.print(this.encodeLetter('g'));
     }
 }

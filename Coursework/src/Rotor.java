@@ -3,7 +3,7 @@ public abstract class Rotor {
     protected String name;
     protected int position;
     protected int[] mapping;
-    protected static final int ROTORSIZE = 25;
+    protected static final int ROTORSIZE = 26;
 
     public void setPosition(int position) {
         this.position = position;
