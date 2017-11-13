@@ -34,17 +34,16 @@ public class BasicRotor extends Rotor {
     }
 
     private int basicSubstitution(int character, int[] mapping){
-        character++;
-        if(character - this.position >= 1){
-            if(mapping[character - this.position - 1] + this.position >= ROTORSIZE){
-                return mapping[character - this.position - 1] + this.position - ROTORSIZE;
+        if(character - this.position >= 0){
+            if(mapping[character - this.position] + this.position >= ROTORSIZE){
+                return mapping[character - this.position] + this.position - ROTORSIZE;
             }
-            return mapping[character - this.position - 1] + this.position;
+            return mapping[character - this.position] + this.position;
         } else {
-            if(mapping[ROTORSIZE + (character - this.position) - 1] + this.position >= ROTORSIZE){
-                return mapping[ROTORSIZE + (character - this.position) - 1] + this.position - ROTORSIZE;
+            if(mapping[ROTORSIZE + (character - this.position)] + this.position >= ROTORSIZE){
+                return mapping[ROTORSIZE + (character - this.position)] + this.position - ROTORSIZE;
             }
-            return mapping[ROTORSIZE + (character - this.position) - 1] + this.position;
+            return mapping[ROTORSIZE + (character - this.position)] + this.position;
         }
     }
 
@@ -57,7 +56,7 @@ public class BasicRotor extends Rotor {
     }
 
     public void rotate(){
-        if(this.position == ROTORSIZE){
+        if(this.position == ROTORSIZE - 1){
             this.position = 0;
             return;
         }

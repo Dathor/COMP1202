@@ -54,23 +54,27 @@ public class WordGroup {
         HashMap<String, Integer> result = new HashMap<String, Integer>();
         String[] wordArray = this.getWordArray();
 
-        //Cycle through the word array
-        for(int i = 0; i < wordArray.length; i++){
-            //Save the current word
-            String currentWord = wordArray[i];
-            int count = 0;
-            //Cycle through the rest of the array and check for other occurrences
-            for(int j = i; j < wordArray.length; j++){
-                //Check if the word is equal to the current word and is it already part of the map
-                if(wordArray[j].equals(currentWord) && !result.containsKey(wordArray[j])){
-                    count++;
-                }
-            }
-            //If the current word was a duplicate count would be 0
-            if(count != 0){
-                result.put(currentWord, count);
-            }
+        for(String word: wordArray){
+            result.put(word, result.getOrDefault(word, 0 ) + 1);
         }
+
+//        //Cycle through the word array
+//        for(int i = 0; i < wordArray.length; i++){
+//            //Save the current word
+//            String currentWord = wordArray[i];
+//            int count = 0;
+//            //Cycle through the rest of the array and check for other occurrences
+//            for(int j = i; j < wordArray.length; j++){
+//                //Check if the word is equal to the current word and is it already part of the map
+//                if(wordArray[j].equals(currentWord) && !result.containsKey(wordArray[j])){
+//                    count++;
+//                }
+//            }
+//            //If the current word was a duplicate count would be 0
+//            if(count != 0){
+//                result.put(currentWord, count);
+//            }
+//        }
 
         return result;
     }

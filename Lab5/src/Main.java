@@ -12,6 +12,8 @@ public class Main {
         String[] platoArray = plato.getWordArray();
         String[] rooseveltArray = roosevelt.getWordArray();
 
+        System.out.println("Part 1:");
+
         //Print out the arrays
         for(int i = 0; i < platoArray.length; i++){
             System.out.print(platoArray[i] + " ");
@@ -21,8 +23,9 @@ public class Main {
         for(int i = 0; i < rooseveltArray.length; i++){
             System.out.print(rooseveltArray[i] + " ");
         }
-
         System.out.println();
+
+        System.out.println("Part 2:");
 
         //Get the combined word set and print it
         HashSet<String> combinedSet = plato.getWordSet(roosevelt);
@@ -31,7 +34,7 @@ public class Main {
             System.out.print(word + " ");
         }
 
-        System.out.println();
+        System.out.println("Part 3:");
 
         //Get the hash maps of the words and their amounts and print them
         HashMap<String, Integer> platoCounts = plato.getWordCounts();
