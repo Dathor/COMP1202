@@ -8,17 +8,17 @@ public class EnigmaFile {
 
     public EnigmaFile(){
         this.enigmaMachine = new EnigmaMachine();
-        this.enigmaMachine.addPlug('b', 'c');
-        this.enigmaMachine.addPlug('r', 'i');
-        this.enigmaMachine.addPlug('s', 'm');
-        this.enigmaMachine.addPlug('a', 'f');
-        this.enigmaMachine.addRotor(new BasicRotor("IV"), 0);
+        this.enigmaMachine.addPlug('Q', 'F');
+//        this.enigmaMachine.addRotor(new BasicRotor("III"), 2);
+//        this.enigmaMachine.addRotor(new BasicRotor("II"), 1);
+//        this.enigmaMachine.addRotor(new BasicRotor("I"), 0);
+        this.enigmaMachine.addRotor(new TurnoverRotor("III", null), 2);
+        this.enigmaMachine.addRotor(new TurnoverRotor("II", this.enigmaMachine.getRotor(2)), 1);
+        this.enigmaMachine.addRotor(new TurnoverRotor("I",this.enigmaMachine.getRotor(1)), 0);
+        this.enigmaMachine.addReflector(new Reflector("ReflectorI"));
         this.enigmaMachine.setPosition(0, 23);
-        this.enigmaMachine.addRotor(new BasicRotor("V"), 1);
-        this.enigmaMachine.setPosition(1, 4);
-        this.enigmaMachine.addRotor(new BasicRotor("II"), 2);
-        this.enigmaMachine.setPosition(2, 9);
-        this.enigmaMachine.addReflector(new Reflector("ReflectorII"));
+        this.enigmaMachine.setPosition(1, 11);
+        this.enigmaMachine.setPosition(2, 7);
     }
 
     public void decodeFile(String fileToDecode, String targetFile){

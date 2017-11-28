@@ -31,18 +31,17 @@ public class EnigmaMachine {
 
     public void setPosition(int slot, int position){
         while(this.rotors[slot].getPosition() != position){
-            this.rotors[slot].rotate();
+            this.rotors[slot].rotate(true);
         }
     }
 
+
     public char encodeLetter(char letter){
         letter = this.plugboard.substitute(letter);
+
         int index = (int) letter;
-        if(index >= 97){
-            index -= 97;
-        } else{
-            index -= 65;
-        }
+        index -= 65;
+
         for(int i = 0; i < 3; i++){
             index = this.rotors[i].substitute(index);
         }
@@ -53,31 +52,31 @@ public class EnigmaMachine {
             index = this.rotors[i].substituteBack(index);
         }
 
-        index += 97;
+        index += 65;
 
-        this.rotors[0].rotate();
+        this.rotors[0].rotate(false);
 
         return this.plugboard.substitute((char) index);
 
 
     }
 
-    public void start(){
-        this.addPlug('b', 'c');
-        this.addPlug('r', 'i');
-        this.addPlug('s', 'm');
-        this.addPlug('a', 'f');
-        this.addRotor(new BasicRotor("IV"), 0);
-        this.setPosition(0, 23);
-        this.addRotor(new BasicRotor("V"), 1);
-        this.setPosition(1, 4);
-        this.addRotor(new BasicRotor("II"), 2);
-        this.setPosition(2, 9);
-        this.addReflector(new Reflector("ReflectorII"));
-        System.out.print(this.encodeLetter('g'));
-        System.out.print(this.encodeLetter('a'));
-        System.out.print(this.encodeLetter('c'));
-        System.out.print(this.encodeLetter('i'));
-        System.out.print(this.encodeLetter('g'));
-    }
+//    public void start(){
+//        this.addPlug('b', 'c');
+//        this.addPlug('r', 'i');
+//        this.addPlug('s', 'm');
+//        this.addPlug('a', 'f');
+//        this.addRotor(new BasicRotor("IV"), 0);
+//        this.setPosition(0, 23);
+//        this.addRotor(new BasicRotor("V"), 1);
+//        this.setPosition(1, 4);
+//        this.addRotor(new BasicRotor("II"), 2);
+//        this.setPosition(2, 9);
+//        this.addReflector(new Reflector("ReflectorII"));
+//        System.out.print(this.encodeLetter('g'));
+//        System.out.print(this.encodeLetter('a'));
+//        System.out.print(this.encodeLetter('c'));
+//        System.out.print(this.encodeLetter('i'));
+//        System.out.print(this.encodeLetter('g'));
+//    }
 }

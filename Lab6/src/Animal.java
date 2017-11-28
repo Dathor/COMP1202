@@ -1,6 +1,6 @@
 public abstract class Animal {
-    protected Integer age;
-    protected String name;
+    private Integer age;
+    private String name;
 
     /**
      * Creates a new animal object

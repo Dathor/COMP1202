@@ -17,4 +17,6 @@ public abstract class Rotor {
 
     public abstract int substitute(int character);
 
+    //public abstract void setNextRotor(BasicRotor rotor);
+
 }
