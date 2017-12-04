@@ -24,6 +24,25 @@ public class TurnoverRotor extends BasicRotor {
         this.nextRotor = nextRotor;
     }
 
+    public TurnoverRotor(String name){
+        super(name);
+        if(this.name.equals("I")){
+            this.turnoverPosition = 24;
+        }
+        if(this.name.equals("II")){
+            this.turnoverPosition = 12;
+        }
+        if(this.name.equals("III")){
+            this.turnoverPosition = 3;
+        }
+        if(this.name.equals("IV")){
+            this.turnoverPosition = 17;
+        }
+        if(this.name.equals("V")){
+            this.turnoverPosition = 7;
+        }
+    }
+
     public void setNextRotor(BasicRotor nextRotor){
         this.nextRotor = nextRotor;
     }
