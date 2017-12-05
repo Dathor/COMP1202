@@ -6,21 +6,19 @@ public class EnigmaFile {
     private FileReader reader;
     private FileWriter writer;
 
-    public EnigmaFile(){
-        this.enigmaMachine = new EnigmaMachine();
-        this.enigmaMachine.addPlug('Q', 'F');
-//        this.enigmaMachine.addRotor(new BasicRotor("III"), 2);
-//        this.enigmaMachine.addRotor(new BasicRotor("II"), 1);
-//        this.enigmaMachine.addRotor(new BasicRotor("I"), 0);
-        this.enigmaMachine.addRotor(new TurnoverRotor("III", null), 2);
-        this.enigmaMachine.addRotor(new TurnoverRotor("II", this.enigmaMachine.getRotor(2)), 1);
-        this.enigmaMachine.addRotor(new TurnoverRotor("I",this.enigmaMachine.getRotor(1)), 0);
-        this.enigmaMachine.addReflector(new Reflector("ReflectorI"));
-        this.enigmaMachine.setPosition(0, 23);
-        this.enigmaMachine.setPosition(1, 11);
-        this.enigmaMachine.setPosition(2, 7);
+    /**
+     * Creates a new enigma machine file writer
+     * @param em The enigma machine
+     */
+    public EnigmaFile(EnigmaMachine em){
+        this.enigmaMachine = em;
     }
 
+    /**
+     * Decodes a string from a file
+     * @param fileToDecode The file to decode from
+     * @param targetFile The file to write to
+     */
     public void decodeFile(String fileToDecode, String targetFile){
         try{
             this.reader = new FileReader(fileToDecode);

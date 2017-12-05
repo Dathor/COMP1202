@@ -1,5 +1,9 @@
 public class Reflector extends Rotor {
 
+    /**
+     * Initialises the reflector
+     * @param name The type of the reflector
+     */
     public void initialise(String name){
         this.name = name;
         if(name == "ReflectorI"){
@@ -10,10 +14,19 @@ public class Reflector extends Rotor {
         }
     }
 
+    /**
+     * Creates a new reflector
+     * @param name The type of the reflector
+     */
     public Reflector(String name){
         this.initialise(name);
     }
 
+    /**
+     * Substitutes the character through the plugboard
+     * @param character The character
+     * @return The substituted character
+     */
     public int substitute(int character){
         return this.mapping[character];
     }

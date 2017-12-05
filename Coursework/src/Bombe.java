@@ -2,6 +2,16 @@ import java.util.HashMap;
 
 public class Bombe {
 
+    /**
+     * Find two plugs with only one given character
+     * @param em The enigma machine
+     * @param containedMessage The message contained in the output
+     * @param firstPlug The letter of the first plug
+     * @param secondPlug The letter of the second plug
+     * @param message The message to decode
+     * @return The plugs that satisfy the condition and the decoded messages
+     * @throws Exception If the plugs could not be found
+     */
     public HashMap<String, Character[]> findPlugs(EnigmaMachine em, String containedMessage, char firstPlug, char secondPlug, String message) throws Exception{
         HashMap<String, Character[]> plugs = new HashMap<>();
         String decodedMessage = new String();
@@ -28,6 +38,14 @@ public class Bombe {
         throw new Exception("Couldn't find the plugs");
     }
 
+    /**
+     * Find the rotor positions
+     * @param em The enigma machine
+     * @param containedMessage The message contained in the output
+     * @param message The message to decode
+     * @return The rotor positions that satisfy the condition and the decoded messages
+     * @throws Exception If the rotor positions could not be found
+     */
     public HashMap<String, Integer[]> findRotorPositions(EnigmaMachine em, String containedMessage, String message) throws Exception{
         HashMap<String, Integer[]> rotors = new HashMap<>();
         String decodedMessage = new String();
@@ -57,6 +75,17 @@ public class Bombe {
         throw new Exception("Couldn't find the rotor positions");
     }
 
+    /**
+     * Find the rotor types
+     * @param em The enigma machine
+     * @param firstPosition The position of the first rotor
+     * @param secondPosition The position of the second rotor
+     * @param thirdPosition The position of the third rotor
+     * @param containedMessage The message contained in the output
+     * @param message The message to decode
+     * @return The rotor positions and the decoded messages
+     * @throws Exception If the rotor types could not be found
+     */
     public HashMap<String, String[]> findRotorTypes(EnigmaMachine em, int firstPosition, int secondPosition, int thirdPosition, String containedMessage, String message) throws Exception{
         HashMap<String, String[]> rotors = new HashMap<>();
         String decodedMessage = new String();
@@ -91,6 +120,11 @@ public class Bombe {
         throw new Exception("Couldn't find the rotor types");
     }
 
+    /**
+     * Parses an int from 1 to 5 to a roman numeral
+     * @param number The integer
+     * @return The roman numeral
+     */
     private String intToRoman(int number){
         String roman;
         switch (number){

@@ -2,6 +2,10 @@ public class BasicRotor extends Rotor {
 
     private int[] inverseMapping;
 
+    /**
+     * Initialises the rotor
+     * @param name The type of the rotor
+     */
     public void initialise(String name){
         this.name = name;
         if(name.equals("I")){
@@ -21,6 +25,10 @@ public class BasicRotor extends Rotor {
         }
     }
 
+    /**
+     * Creates a new rotor
+     * @param name The type of the rotor
+     */
     public BasicRotor(String name){
         this.initialise(name);
         this.position = 0;
@@ -33,6 +41,12 @@ public class BasicRotor extends Rotor {
 
     }
 
+    /**
+     * Substitutes a letter using a mapping
+     * @param character The index of the letter
+     * @param mapping The mapping (normal or inverse)
+     * @return The substituted letter
+     */
     private int basicSubstitution(int character, int[] mapping){
         if(character - this.position >= 0){
             if(mapping[character - this.position] + this.position >= ROTORSIZE){
@@ -47,14 +61,28 @@ public class BasicRotor extends Rotor {
         }
     }
 
+    /**
+     * Substitutes a letter using the normal mapping
+     * @param character The index of the letter
+     * @return The substituted letter
+     */
     public int substitute(int character){
         return basicSubstitution(character, this.mapping);
     }
-    
+
+    /**
+     * Substitutes a letter using the inverse mapping
+     * @param character The index of the letter
+     * @return The substituted letter
+     */
     public int substituteBack(int character){
        return basicSubstitution(character, this.inverseMapping);
     }
 
+    /**
+     * Rotates the rotor once
+     * @param firstRotation True if called in the set position method
+     */
     public void rotate(boolean firstRotation){
         if(this.position == ROTORSIZE - 1){
             this.position = 0;
